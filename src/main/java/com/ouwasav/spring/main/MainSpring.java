@@ -20,6 +20,7 @@ public class MainSpring {
 		Restaurant resto =  (Restaurant) context.getBean("restaurantBean");
 		
 		resto.greetCustomer();
+		resto.prepareHotDrink();
 	}
 
 }

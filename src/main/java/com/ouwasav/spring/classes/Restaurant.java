@@ -20,7 +20,7 @@ public class Restaurant {
 	
 	public void prepareHotDrink() {
 		//tea.prepareTea();
-		hotDrink.prepareTea();
+		hotDrink.prepareHotDrink();
 	}
 
 	public String getWelcomeNote() {

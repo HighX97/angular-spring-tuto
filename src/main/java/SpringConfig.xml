@@ -2,7 +2,16 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+
   <bean id="restaurantBean" class="com.ouwasav.spring.classes.Restaurant">
+  <constructor-arg ref="teaBean" />
     <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
   </bean>
+  
+  
+    <bean id="teaBean" class="com.ouwasav.spring.classes.Tea"></bean>
+  
+  
 </beans>

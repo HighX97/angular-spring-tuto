@@ -2,7 +2,7 @@ package com.ouwasav.spring.classes;
 
 public class Tea implements IHotDrink {
 
-	public void prepareTea() {
+	public void prepareHotDrink() {
 		System.out.println("prepareTea");
 		
 	}
