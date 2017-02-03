@@ -6,7 +6,8 @@ public class MainSpring {
 	
 	public static void main(String [] args)
 	{
-		Restaurant r = new Restaurant() ;
+		Tea t = new Tea();
+		Restaurant r = new Restaurant(t) ;
 		r.prepareHotDrink();
 	}
 
