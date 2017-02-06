@@ -2,11 +2,17 @@ package com.ouwasav.spring.classes;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class Restaurant {
 	
+	private static int count = 0; ;
 	//Tea tea = new Tea() ;
 	IHotDrink hotDrink ;
 	private String welcomeNote ;
+	private int id ;
+	
 	private List<String> restaurantWaitersList ;
 	
 	
@@ -15,9 +21,11 @@ public class Restaurant {
 	}
 	
 	public Restaurant() {
+		this.setId(++count) ;;
 	}
 	
 	public Restaurant(IHotDrink hotDrink) {
+		this();
 		this.hotDrink = hotDrink;
 	}
 	
@@ -54,14 +62,24 @@ public class Restaurant {
 		this.restaurantWaitersList = restaurantWaitersList;
 	}
 	
+	@PostConstruct
 	public void init()
 	{
-		System.err.println("Restaurant Bean is groind through init.");
+		System.err.println("Restaurant Bean"+this.id+" is going through init.");
 	}
 	
+	@PreDestroy
 	public void destroy()
 	{
-		System.err.println("Restaurant Bean will be destroy now.");
+		System.err.println("Restaurant Bean"+this.id+" will be destroy now.");
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
