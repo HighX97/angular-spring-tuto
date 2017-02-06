@@ -1,6 +1,7 @@
 package com.ouwasav.spring.main;
 
 import org.springframework.context.ApplicationContext ;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ouwasav.spring.classes.* ;
@@ -16,6 +17,9 @@ public class MainSpring {
 		r.prepareHotDrink();
 
 		context = new ClassPathXmlApplicationContext("SpringConfig.xml");
+		
+		((AbstractApplicationContext) context).registerShutdownHook();
+
 
 		Restaurant resto =  (Restaurant) context.getBean("restaurantBean");
 		resto.setWelcomeNote("welcomeNote restaunt 0");
@@ -49,6 +53,7 @@ public class MainSpring {
 		resto5.greetCustomer();
 		resto5.prepareHotDrink();
 		resto5.displayWaitersNames();
+		
 	}
 
 }

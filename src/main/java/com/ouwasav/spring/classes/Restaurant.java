@@ -26,7 +26,6 @@ public class Restaurant {
 	}
 	
 	public void prepareHotDrink() {
-		//tea.prepareTea();
 		hotDrink.prepareHotDrink();
 	}
 
@@ -53,6 +52,16 @@ public class Restaurant {
 
 	public void setRestaurantWaitersList(List<String> restaurantWaitersList) {
 		this.restaurantWaitersList = restaurantWaitersList;
+	}
+	
+	public void init()
+	{
+		System.err.println("Restaurant Bean is groind through init.");
+	}
+	
+	public void destroy()
+	{
+		System.err.println("Restaurant Bean will be destroy now.");
 	}
 
 }
