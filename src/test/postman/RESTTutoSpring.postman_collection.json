@@ -1,0 +1,77 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RESTTutoSpring",
+		"_postman_id": "fa2c935e-eb69-696c-fd7c-22bbad3414a2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Restaurant",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"url": "localhost:8080/restau",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\" : \"la pataterie\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ONE",
+					"request": {
+						"url": "localhost:8080/restau",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\" : \"la pataterie\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "LIST",
+					"request": {
+						"url": "localhost:8080/restau/list",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\" : \"la pataterie\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
