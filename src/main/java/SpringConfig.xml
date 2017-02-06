@@ -5,32 +5,61 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
 
-  <bean id="restaurantBean" class="com.ouwasav.spring.classes.Restaurant">
-  <!--
-    <constructor-arg ref="teaBean" />
-   -->
-   <property name="restaurantWaitersList">
-     <list>
-       <value>Mr. A</value>
-       <value>Mr. B</value>
-       <value>Mr. C</value>
-       <value>Mr. D</value>
-       <value>Mr. E</value>
-       <value>Mr. F</value>
-       <value>Mr. G</value>
-       <value>Mr. H</value>
-       <value>Mr. I</value>
-       <value>Mr. J</value>
-       <value>Mr. K</value>
-       <value>Mr. L</value>
-       <value>Mr. M</value>
-     </list>
-   </property>
-    <property name="hotDrink" ref="teaBean" />
-    <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
-  </bean>
+<bean id="restaurantBean" class="com.ouwasav.spring.classes.Restaurant" scope="prototype">
+<!-- Dependency Injection using constructor way -->
+  <constructor-arg ref="teaBean" />
+    <!-- Dependency Injection with a Collection property -->
+ <property name="restaurantWaitersList">
+   <list>
+     <value>Mr. A</value>
+     <value>Mr. B</value>
+     <value>Mr. C</value>
+     <value>Mr. D</value>
+     <value>Mr. E</value>
+     <value>Mr. F</value>
+     <value>Mr. G</value>
+     <value>Mr. H</value>
+     <value>Mr. I</value>
+     <value>Mr. J</value>
+     <value>Mr. K</value>
+     <value>Mr. L</value>
+     <value>Mr. M</value>
+   </list>
+ </property>
+   <!-- Dependency Injection using setter method way -->
+  <property name="hotDrink" ref="teaBean" />
+    <!-- Injecting value into a Bean property -->
+  <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
+</bean>
 
+<bean id="restaurantBeanSing" class="com.ouwasav.spring.classes.Restaurant" scope="singleton">
+<!-- Dependency Injection using constructor way -->
+  <constructor-arg ref="teaBean" />
+    <!-- Dependency Injection with a Collection property -->
+ <property name="restaurantWaitersList">
+   <list>
+     <value>Mme. A</value>
+     <value>Mme. B</value>
+     <value>Mme. C</value>
+     <value>Mme. D</value>
+     <value>Mme. E</value>
+     <value>Mme. F</value>
+     <value>Mme. G</value>
+     <value>Mme. H</value>
+     <value>Mme. I</value>
+     <value>Mme. J</value>
+     <value>Mme. K</value>
+     <value>Mme. L</value>
+     <value>Mme. M</value>
+   </list>
+ </property>
+   <!-- Dependency Injection using setter method way -->
+  <property name="hotDrink" ref="teaBean" />
+    <!-- Injecting value into a Bean property -->
+  <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
+</bean>
 
+      <!-- Dependency Injection using constructor way setter method way  -->
     <bean id="teaBean" class="com.ouwasav.spring.classes.Tea"></bean>
 
 
