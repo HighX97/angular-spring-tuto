@@ -15,6 +15,7 @@ public class Restaurant implements InitializingBean , DisposableBean{
 	IHotDrink hotDrink ;
 	private String welcomeNote ;
 	private int id ;
+	private String name ;
 	
 	private List<String> restaurantWaitersList ;
 	
@@ -27,9 +28,16 @@ public class Restaurant implements InitializingBean , DisposableBean{
 		this.setId(++count) ;;
 	}
 	
+	
+	
 	public Restaurant(IHotDrink hotDrink) {
 		this();
 		this.hotDrink = hotDrink;
+	}
+	
+	public Restaurant(String name) {
+		this();
+		this.name = name ;
 	}
 	
 	public void setHotDrink(IHotDrink hotDrink) {
@@ -95,6 +103,14 @@ public class Restaurant implements InitializingBean , DisposableBean{
 	public void destroy() throws Exception {
 		// TODO Auto-generated method stub
 		System.err.println("Restaurant Bean"+this.id+" will be destroy now.");
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
