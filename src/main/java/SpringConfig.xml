@@ -36,7 +36,7 @@
     
     
     <!-- Injecting value into a Bean property -->
-    <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
+    <property name="WelcomeNote" value="${welcomeNote}"></property>
   </bean>
 
   <!-- scope="singleton" -->
@@ -109,6 +109,14 @@
   <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor1"/>  
   <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor2"/>  
   <bean class="com.ouwasav.spring.classes.DemoBeanFactoryProcessor"/>  
+  
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="Locations">
+    <value>
+    	classpath:spring.properties
+    </value>
+    </property>
+    </bean>  
  
 
 
