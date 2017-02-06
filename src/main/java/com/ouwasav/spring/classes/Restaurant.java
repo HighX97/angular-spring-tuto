@@ -5,7 +5,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class Restaurant {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Restaurant implements InitializingBean , DisposableBean{
 	
 	private static int count = 0; ;
 	//Tea tea = new Tea() ;
@@ -62,6 +65,7 @@ public class Restaurant {
 		this.restaurantWaitersList = restaurantWaitersList;
 	}
 	
+	/*
 	@PostConstruct
 	public void init()
 	{
@@ -73,6 +77,7 @@ public class Restaurant {
 	{
 		System.err.println("Restaurant Bean"+this.id+" will be destroy now.");
 	}
+	*/
 
 	public int getId() {
 		return id;
@@ -80,6 +85,20 @@ public class Restaurant {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	//implements InitializingBean
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub
+		System.err.println("Restaurant Bean"+this.id+" is going through afterPropertiesSet.");
+
+		
+	}
+	
+	//implements DisposableBean
+	public void destroy() throws Exception {
+		// TODO Auto-generated method stub
+		System.err.println("Restaurant Bean"+this.id+" will be destroy now.");
 	}
 
 }

@@ -95,7 +95,9 @@
   
   
   <!-- Bean Life Cycle using Annotations and InitializingBean,DisposableBean interface  -->
+  <!--
  <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>  
+ -->
 
 
 
