@@ -1,4 +1,4 @@
-package com.ouwasav.spring.classes;
+package com.ouwasav.spring.models;
 
 import java.util.List;
 

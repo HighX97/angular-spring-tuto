@@ -5,6 +5,8 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ouwasav.spring.classes.* ;
+import com.ouwasav.spring.models.Restaurant;
+import com.ouwasav.spring.models.Tea;
 
 public class MainSpring {
 

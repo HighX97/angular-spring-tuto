@@ -1,33 +1,22 @@
-package com.ouwasav.spring.classes;
+package com.ouwasav.spring.controllers;
 
+import java.awt.PageAttributes.MediaType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.ouwasav.*;
 
-import com.ouwasav.spring.classes.*;
+import com.ouwasav.spring.models.Restaurant;
+import com.ouwasav.spring.models.Tea;
 
 @RestController
-public class GreetingController {
-
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
-
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Greeting(counter.incrementAndGet(),
-                            String.format(template, name));
-    }
-
-    @RequestMapping("/test")
-    public String test(@RequestParam(value="name", defaultValue="World") String name) {
-        return String.format(template, "Chat");
-    }
-
-	@RequestMapping("/restau")
+public class RestaurantController {
+	
+	@RequestMapping(value = "/restau" , method=RequestMethod.GET , produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 	public Restaurant getRestaurant(
 			@RequestParam(value ="name" ,defaultValue="Resto") String name)
 	{
@@ -37,7 +26,7 @@ public class GreetingController {
 		return r;
 	}
 
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list" , method=RequestMethod.GET , produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
     public List<Restaurant> test1(@RequestParam(value="name", defaultValue="World") String name) {
         List<Restaurant> rslt = new ArrayList<Restaurant>();
         rslt.add(new Restaurant("A"));
