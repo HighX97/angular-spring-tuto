@@ -1,4 +1,4 @@
-package com.ouwasav.restService;
+package com.ouwasav.spring.classes;
 
 public class Greeting {
 
