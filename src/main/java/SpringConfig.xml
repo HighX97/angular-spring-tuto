@@ -5,6 +5,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
 
+<!-- scope="prototype" -->
 <bean id="restaurantBean" class="com.ouwasav.spring.classes.Restaurant" scope="prototype">
 <!-- Dependency Injection using constructor way -->
   <constructor-arg ref="teaBean" />
@@ -32,6 +33,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
 </bean>
 
+<!-- scope="singleton" -->
 <bean id="restaurantBeanSing" class="com.ouwasav.spring.classes.Restaurant" scope="singleton">
 <!-- Dependency Injection using constructor way -->
   <constructor-arg ref="teaBean" />
@@ -51,6 +53,34 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
      <value>Mme. K</value>
      <value>Mme. L</value>
      <value>Mme. M</value>
+   </list>
+ </property>
+   <!-- Dependency Injection using setter method way -->
+  <property name="hotDrink" ref="teaBean" />
+    <!-- Injecting value into a Bean property -->
+  <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
+</bean>
+
+<!-- scope="singleton" -->
+<bean id="restaurantBeanSingLazy" class="com.ouwasav.spring.classes.Restaurant" scope="singleton" lazy-init="true">
+<!-- Dependency Injection using constructor way -->
+  <constructor-arg ref="teaBean" />
+    <!-- Dependency Injection with a Collection property -->
+ <property name="restaurantWaitersList">
+   <list>
+     <value>Mr. 0A</value>
+     <value>Mr. 0B</value>
+     <value>Mr. 0C</value>
+     <value>Mr. 0D</value>
+     <value>Mr. 0E</value>
+     <value>Mr. 0F</value>
+     <value>Mr. 0G</value>
+     <value>Mr. 0H</value>
+     <value>Mr. 0I</value>
+     <value>Mr. 0J</value>
+     <value>Mr. 0K</value>
+     <value>Mr. 0L</value>
+     <value>Mr. 0M</value>
    </list>
  </property>
    <!-- Dependency Injection using setter method way -->

@@ -38,6 +38,17 @@ public class MainSpring {
 		resto3.greetCustomer();
 		resto3.prepareHotDrink();
 		resto3.displayWaitersNames();
+
+		Restaurant resto4 =  (Restaurant) context.getBean("restaurantBeanSingLazy");
+		resto4.setWelcomeNote("welcomeNote restaunt 4");
+		resto4.greetCustomer();
+		resto4.prepareHotDrink();
+		resto4.displayWaitersNames();
+
+		Restaurant resto5 =  (Restaurant) context.getBean("restaurantBeanSingLazy");
+		resto5.greetCustomer();
+		resto5.prepareHotDrink();
+		resto5.displayWaitersNames();
 	}
 
 }
