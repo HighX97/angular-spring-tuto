@@ -6,7 +6,11 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
   <bean id="restaurantBean" class="com.ouwasav.spring.classes.Restaurant">
-  <constructor-arg ref="teaBean" />
+  <!-- 
+    <constructor-arg ref="teaBean" />
+   -->
+
+    <property name="hotDrink" ref="teaBean" />
     <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
   </bean>
   

@@ -18,6 +18,10 @@ public class Restaurant {
 		this.hotDrink = hotDrink;
 	}
 	
+	public void setHotDrink(IHotDrink hotDrink) {
+		this.hotDrink = hotDrink;
+	}
+	
 	public void prepareHotDrink() {
 		//tea.prepareTea();
 		hotDrink.prepareHotDrink();
