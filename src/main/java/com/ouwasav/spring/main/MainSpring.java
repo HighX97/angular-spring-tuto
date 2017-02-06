@@ -21,6 +21,7 @@ public class MainSpring {
 		
 		resto.greetCustomer();
 		resto.prepareHotDrink();
+		resto.displayWaitersNames();
 	}
 
 }
