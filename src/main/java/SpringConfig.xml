@@ -98,6 +98,9 @@
   <!--
  <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>  
  -->
+ 
+  <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor"/>  
+ 
 
 
 
