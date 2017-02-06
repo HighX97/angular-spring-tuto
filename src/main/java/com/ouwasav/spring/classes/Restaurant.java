@@ -65,19 +65,14 @@ public class Restaurant implements InitializingBean , DisposableBean{
 		this.restaurantWaitersList = restaurantWaitersList;
 	}
 	
-	/*
+
 	@PostConstruct
 	public void init()
 	{
 		System.err.println("Restaurant Bean"+this.id+" is going through init.");
 	}
 	
-	@PreDestroy
-	public void destroy()
-	{
-		System.err.println("Restaurant Bean"+this.id+" will be destroy now.");
-	}
-	*/
+
 
 	public int getId() {
 		return id;
@@ -96,6 +91,7 @@ public class Restaurant implements InitializingBean , DisposableBean{
 	}
 	
 	//implements DisposableBean
+	@PreDestroy
 	public void destroy() throws Exception {
 		// TODO Auto-generated method stub
 		System.err.println("Restaurant Bean"+this.id+" will be destroy now.");

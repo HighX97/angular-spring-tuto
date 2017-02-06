@@ -1,7 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+  default-init-method="init" default-destroy-method="destroy">
   <!-- Bean Life Cycle Global  -->
 
 
@@ -28,8 +29,12 @@
         <value>Mr. M</value>
       </list>
     </property>
+    
+    
     <!-- Dependency Injection using setter method way -->
     <property name="hotDrink" ref="teaBean" />
+    
+    
     <!-- Injecting value into a Bean property -->
     <property name="WelcomeNote" value="Welcome to our Restaurant !!"></property>
   </bean>
@@ -102,7 +107,8 @@
   <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor"/>  
    
   <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor1"/>  
-    <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor2"/>  
+  <bean class="com.ouwasav.spring.classes.DemoBeanPostProcessor2"/>  
+  <bean class="com.ouwasav.spring.classes.DemoBeanFactoryProcessor"/>  
  
 
 
