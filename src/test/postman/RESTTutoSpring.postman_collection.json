@@ -72,6 +72,72 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Utilisateur",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"url": "localhost:8080/utilisateur",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\" : \"la pataterie\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "LIST",
+					"request": {
+						"url": "localhost:8080/utilisateur",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"Lowx\",\n  \"phone\": \"0695504940\",\n  \"mail\": \"Carl10@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ONE",
+					"request": {
+						"url": "localhost:8080/utilisateur/8",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"Lowx\",\n  \"phone\": \"0695504940\",\n  \"mail\": \"Carl10@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
