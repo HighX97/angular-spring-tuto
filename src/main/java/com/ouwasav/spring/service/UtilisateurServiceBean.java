@@ -32,6 +32,7 @@ public class UtilisateurServiceBean implements UtilisateurService {
 
 	public boolean delete(int id) {
 		return delete_tools(id);
+
 	}
 	
 	////////////////////////////////////////////////////
