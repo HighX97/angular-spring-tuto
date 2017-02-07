@@ -98,4 +98,25 @@ public class Utilisateur
 		this.password = password;
 	}
 
+	public Utilisateur update(Utilisateur u_send) 
+	{
+		if (u_send.getMail() != "")
+		{
+			this.mail =  u_send.getMail();
+		}
+		if (u_send.getPhone() != "")
+		{
+			this.phone =  u_send.getPhone();
+		}
+		if (u_send.getNom() != "")
+		{
+			this.nom =  u_send.getNom();
+		}
+		if (u_send.getPassword() != "")
+		{
+			this.password =  u_send.getPassword();
+		}
+		return this;
+	}
+
 }

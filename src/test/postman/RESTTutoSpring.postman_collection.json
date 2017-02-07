@@ -138,6 +138,92 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "UtilisateurMaps",
+			"description": "",
+			"item": [
+				{
+					"name": "LIST",
+					"request": {
+						"url": "localhost:8080/maps/utilisateur",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"Lowx\",\n  \"phone\": \"0695504940\",\n  \"mail\": \"Carl10@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ONE",
+					"request": {
+						"url": "localhost:8080/maps/utilisateur/26",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"Lowx\",\n  \"phone\": \"0695504940\",\n  \"mail\": \"Carl10@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"url": "localhost:8080/maps/utilisateur",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 26,\n  \"nom\": \"Carl26\",\n  \"phone\": null,\n  \"mail\": \"Carl26@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"url": "localhost:8080/maps/utilisateur/88",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 88,\n  \"nom\": \"Lowx\",\n  \"phone\": \"0695989794\",\n  \"mail\": \"Carl26@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
