@@ -73,6 +73,18 @@ public class UtilisateurController
     utilisateurs_maps.put(id, u_update);
     return u_update;
   }
+  
+  private static boolean delete(int id)
+  {
+    //Error Utilisateur not exist
+    if (! utilisateurs_maps.containsKey(id))
+    {
+      return false;
+    }
+    //Update Utilisateur
+    utilisateurs_maps.remove(id);
+    return true;
+  }
 
   //Route
   @RequestMapping(value = "/utilisateur" ,
@@ -135,6 +147,20 @@ public class UtilisateurController
     Utilisateur u_find = utilisateurs_maps.get(id);
     return new ResponseEntity<Utilisateur>(u_find, HttpStatus.OK);
   }
+  
+  @RequestMapping(value = "/maps/utilisateur/{id}" ,
+  method=RequestMethod.DELETE ,
+  produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Utilisateur> deleteUtilisateurById_maps(
+  @PathVariable("id") int id )
+  {
+	    boolean utilisateur_delete =  delete(id);
+	    if (utilisateur_delete == false)
+	    {
+	    	return new ResponseEntity<Utilisateur>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	    return new ResponseEntity<Utilisateur>(HttpStatus.OK);
+  }
 
 
   @RequestMapping(value = "/maps/utilisateur" ,
@@ -167,6 +193,6 @@ public class UtilisateurController
     {
     	return new ResponseEntity<Utilisateur>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    return new ResponseEntity<Utilisateur>(utilisateur_save, HttpStatus.CREATED);
+    return new ResponseEntity<Utilisateur>(utilisateur_save, HttpStatus.OK);
   }
 }

@@ -222,6 +222,26 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"url": "localhost:8080/maps/utilisateur/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"Lowx\",\n  \"phone\": \"0695504940\",\n  \"mail\": \"Carl10@mailxample.com\",\n  \"password\": \"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}
