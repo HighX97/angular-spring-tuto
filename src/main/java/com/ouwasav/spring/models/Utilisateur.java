@@ -2,6 +2,12 @@ package com.ouwasav.spring.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Utilisateur 
 {
 	//Class
@@ -12,10 +18,16 @@ public class Utilisateur
 
 	
 	//Objet
+	@Id
+	@GeneratedValue
 	private int id;
+	@Column
 	private String nom;
+	@Column
 	private String phone;
+	@Column
 	private String mail;
+	@Column
 	private String password;
 	
 	

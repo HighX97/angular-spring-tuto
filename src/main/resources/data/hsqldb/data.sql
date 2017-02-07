@@ -1,0 +1,1 @@
+INSERT INTO Utilisateur (nom ,phone,	mail,password ) values ('','','','');
