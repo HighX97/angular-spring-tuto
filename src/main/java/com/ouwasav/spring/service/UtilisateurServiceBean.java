@@ -48,10 +48,8 @@ public class UtilisateurServiceBean implements UtilisateurService {
 
 	public boolean delete(int id) {
 		//utilisateurRepository.delete(id);
-		return delete_tools(id);
-		
+		return delete_tools(id);		
 		//return true;
-
 	}
 	
 	////////////////////////////////////////////////////
