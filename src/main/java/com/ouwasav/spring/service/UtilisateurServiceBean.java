@@ -6,13 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ouwasav.spring.models.Utilisateur;
 import com.ouwasav.spring.repository.UtilisateurRepository;
 
 @Service
+@Transactional(
+		propagation = Propagation.SUPPORTS,
+		readOnly=true)
 public class UtilisateurServiceBean implements UtilisateurService {
 	
 	/*
@@ -34,11 +40,27 @@ public class UtilisateurServiceBean implements UtilisateurService {
 		return utilisateurRepository.findOne(id);
 	}
 
+	@Transactional(
+			propagation = Propagation.REQUIRED,
+			readOnly=false
+			)	
 	public Utilisateur create(Utilisateur u) {
 //		return save_tools(u);
+		
+		
+		//Illustrate Tx rollback
+		Utilisateur u_created = utilisateurRepository.save(u);
+		if (u_created.getId() == 4L)
+		{
+			throw new RuntimeException("Roll me back!!!");
+		}
 		return utilisateurRepository.save(u);
 	}
 
+	@Transactional(
+			propagation = Propagation.REQUIRED,
+			readOnly=false
+			)	
 	public Utilisateur update(Utilisateur u,int id) {
 //		return update_tools(u, id);
 //		/*
