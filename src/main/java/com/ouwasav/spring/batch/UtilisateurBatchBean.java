@@ -5,12 +5,15 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.ouwasav.spring.models.Utilisateur;
 import com.ouwasav.spring.service.UtilisateurService;
 
+
+@Profile("batch")
 @Component
 public class UtilisateurBatchBean {
 
@@ -20,9 +23,8 @@ public class UtilisateurBatchBean {
 	@Autowired
 	private UtilisateurService utilisateurService;
 
-
     @Scheduled(
-            cron = "0,30 * * * * *")
+            cron = "${batch.utilisateur.cron}")
     public void cronJob() {
         logger.info("> cronJob");
 
@@ -35,8 +37,8 @@ public class UtilisateurBatchBean {
     }
 
     @Scheduled(
-            initialDelay = 5000,
-            fixedRate = 15000)
+            initialDelayString = "${batch.utilisateur.initialdelay}",
+            fixedRateString = "${batch.utilisateur.fixedrate}")
     public void fixedRateJobWithInitialDelay() {
         logger.info("> fixedRateJobWithInitialDelay");
 
@@ -55,8 +57,8 @@ public class UtilisateurBatchBean {
     }
 
     @Scheduled(
-            initialDelay = 5000,
-            fixedDelay = 15000)
+            initialDelayString = "${batch.utilisateur.initialdelay}",
+            fixedDelayString = "${batch.utilisateur.fixeddelay}")
     public void fixedDelayJobWithInitialDelay() {
         logger.info("> fixedDelayJobWithInitialDelay");
 
