@@ -36,6 +36,13 @@ public class UtilisateurBatchBean {
         logger.info("< cronJob");
     }
 
+    /**
+     * Execute logic beginning at fixed intervals with a delay after the
+     * application starts. Use the <code>fixedRate</code> element to indicate
+     * how frequently the method is to be invoked. Use the
+     * <code>initialDelay</code> element to indicate how long to wait after
+     * application startup to schedule the first execution.
+     */
     @Scheduled(
             initialDelayString = "${batch.utilisateur.initialdelay}",
             fixedRateString = "${batch.utilisateur.fixedrate}")
@@ -43,6 +50,7 @@ public class UtilisateurBatchBean {
         logger.info("> fixedRateJobWithInitialDelay");
 
         // Add scheduled logic here
+
         // Simulate job processing time
         long pause = 5000;
         long start = System.currentTimeMillis();
@@ -56,6 +64,13 @@ public class UtilisateurBatchBean {
         logger.info("< fixedRateJobWithInitialDelay");
     }
 
+    /**
+     * Execute logic with a delay between the end of the last execution and the
+     * beginning of the next. Use the <code>fixedDelay</code> element to
+     * indicate the time to wait between executions. Use the
+     * <code>initialDelay</code> element to indicate how long to wait after
+     * application startup to schedule the first execution.
+     */
     @Scheduled(
             initialDelayString = "${batch.utilisateur.initialdelay}",
             fixedDelayString = "${batch.utilisateur.fixeddelay}")
@@ -63,6 +78,7 @@ public class UtilisateurBatchBean {
         logger.info("> fixedDelayJobWithInitialDelay");
 
         // Add scheduled logic here
+
         // Simulate job processing time
         long pause = 5000;
         long start = System.currentTimeMillis();
@@ -75,4 +91,5 @@ public class UtilisateurBatchBean {
 
         logger.info("< fixedDelayJobWithInitialDelay");
     }
+
 }
