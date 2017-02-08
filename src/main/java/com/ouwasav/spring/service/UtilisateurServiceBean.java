@@ -1,6 +1,7 @@
 package com.ouwasav.spring.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,42 +15,46 @@ import com.ouwasav.spring.repository.UtilisateurRepository;
 @Service
 public class UtilisateurServiceBean implements UtilisateurService {
 	
-	
+	/*
+	 * ISSUE - FIXED
+	 * Using Spring Data Repositories with Spring Boot could not be found #1
+	 * https://github.com/HighX97/maven-spring-tuto/issues/1
+	 */
 	@Autowired
 	private UtilisateurRepository utilisateurRepository ;
 	
 	
-	public Map<Integer, Utilisateur> findAll() {
-		return utilisateurs_maps;
-		//return ((Map<Integer, Utilisateur>) utilisateurRepository.findAll());
+	public Collection<Utilisateur> findAll() {
+		//return utilisateurs_maps;
+		return utilisateurRepository.findAll();
 	}
 
 	public Utilisateur findOne(int id) {
-		return utilisateurs_maps.get(id);
-		//return utilisateurRepository.findOne(id);
+//		return utilisateurs_maps.get(id);
+		return utilisateurRepository.findOne(id);
 	}
 
 	public Utilisateur create(Utilisateur u) {
-		return save_tools(u);
-		//return utilisateurRepository.save(u);
+//		return save_tools(u);
+		return utilisateurRepository.save(u);
 	}
 
 	public Utilisateur update(Utilisateur u,int id) {
-		return update_tools(u, id);
-		/*
+//		return update_tools(u, id);
+//		/*
 		if (utilisateurRepository.findOne(id) != null)
 		{
 			return utilisateurRepository.save(u);
 		}
 		return null;
-		*/
+//		*/
 		
 	}
 
 	public boolean delete(int id) {
-		//utilisateurRepository.delete(id);
-		return delete_tools(id);		
-		//return true;
+		utilisateurRepository.delete(id);
+//		return delete_tools(id);		
+		return true;
 	}
 	
 	////////////////////////////////////////////////////

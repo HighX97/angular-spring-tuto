@@ -4,6 +4,7 @@
 package com.ouwasav.spring.controllers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,11 +100,11 @@ public class UtilisateurController
   @RequestMapping(value = "/maps/utilisateur" ,
   method=RequestMethod.GET ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Map<Integer,Utilisateur>> getUtilisateur_maps(
+  public ResponseEntity<Collection<Utilisateur>> getUtilisateur_maps(
   @RequestParam(value ="name" ,
   defaultValue="Resto") String name)
   {
-    return new ResponseEntity<Map<Integer,Utilisateur>>(utilisateurService.findAll(), HttpStatus.OK);
+    return new ResponseEntity<Collection<Utilisateur>>(utilisateurService.findAll(), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/maps/utilisateur/{id}" ,
