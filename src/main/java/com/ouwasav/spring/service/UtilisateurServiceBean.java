@@ -14,7 +14,11 @@ import com.ouwasav.spring.repository.UtilisateurRepository;
 @Service
 public class UtilisateurServiceBean implements UtilisateurService {
 	
-	
+	/*
+	 * ISSUE
+	 * Using Spring Data Repositories with Spring Boot could not be found #1
+	 * https://github.com/HighX97/maven-spring-tuto/issues/1
+	 */
 	@Autowired
 	private UtilisateurRepository utilisateurRepository ;
 	
@@ -25,13 +29,13 @@ public class UtilisateurServiceBean implements UtilisateurService {
 	}
 
 	public Utilisateur findOne(int id) {
-		return utilisateurs_maps.get(id);
-		//return utilisateurRepository.findOne(id);
+//		return utilisateurs_maps.get(id);
+		return utilisateurRepository.findOne(id);
 	}
 
 	public Utilisateur create(Utilisateur u) {
 		return save_tools(u);
-		//return utilisateurRepository.save(u);
+//		return utilisateurRepository.save(u);
 	}
 
 	public Utilisateur update(Utilisateur u,int id) {
