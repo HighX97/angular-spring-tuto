@@ -42,9 +42,12 @@ public class UtilisateurServiceBean implements UtilisateurService {
 	public Utilisateur update(Utilisateur u,int id) {
 //		return update_tools(u, id);
 //		/*
-		if (utilisateurRepository.findOne(id) != null)
+		Utilisateur u_to_update = utilisateurRepository.findOne(id) ;
+		if (u_to_update != null)
 		{
-			return utilisateurRepository.save(u);
+			u_to_update.update(u);
+			System.err.println("update : "+id);
+			return utilisateurRepository.save(u_to_update);
 		}
 		return null;
 //		*/
