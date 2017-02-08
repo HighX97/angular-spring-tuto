@@ -13,5 +13,7 @@ public interface UtilisateurService
 	Utilisateur create(Utilisateur u);
 	Utilisateur update(Utilisateur u,int id);
 	boolean delete(int id);
+	
+	void evictCache();
 
 }

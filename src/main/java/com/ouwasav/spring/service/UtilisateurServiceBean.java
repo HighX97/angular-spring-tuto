@@ -8,6 +8,9 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +38,9 @@ public class UtilisateurServiceBean implements UtilisateurService {
 		return utilisateurRepository.findAll();
 	}
 
+	@Cacheable(
+			value="utilisateurs",
+			key ="#id")
 	public Utilisateur findOne(int id) {
 //		return utilisateurs_maps.get(id);
 		return utilisateurRepository.findOne(id);
@@ -43,7 +49,8 @@ public class UtilisateurServiceBean implements UtilisateurService {
 	@Transactional(
 			propagation = Propagation.REQUIRED,
 			readOnly=false
-			)	
+			)
+	@CachePut(value ="utilisateurs", key="#result.id")
 	public Utilisateur create(Utilisateur u) {
 //		return save_tools(u);
 		
@@ -61,14 +68,16 @@ public class UtilisateurServiceBean implements UtilisateurService {
 			propagation = Propagation.REQUIRED,
 			readOnly=false
 			)	
+	@CachePut(value ="utilisateurs", key="#id")
 	public Utilisateur update(Utilisateur u,int id) {
+		System.err.println("update bef"+id);
 //		return update_tools(u, id);
 //		/*
 		Utilisateur u_to_update = utilisateurRepository.findOne(id) ;
 		if (u_to_update != null)
 		{
 			u_to_update.update(u);
-			System.err.println("update : "+id);
+			System.err.println("update aft: "+id);
 			return utilisateurRepository.save(u_to_update);
 		}
 		return null;
@@ -76,10 +85,19 @@ public class UtilisateurServiceBean implements UtilisateurService {
 		
 	}
 
+	@CacheEvict(value ="utilisateurs",
+			key="#id")
 	public boolean delete(int id) {
 		utilisateurRepository.delete(id);
 //		return delete_tools(id);		
 		return true;
+	}
+	
+	@CacheEvict(value ="utilisateurs",
+			allEntries=true)
+	public void evictCache() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	////////////////////////////////////////////////////
@@ -141,5 +159,7 @@ public class UtilisateurServiceBean implements UtilisateurService {
 	    utilisateurs_maps.remove(id);
 	    return true;
 	  }
+
+
 
 }
