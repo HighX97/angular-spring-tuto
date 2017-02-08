@@ -34,8 +34,7 @@ public class Utilisateur
 	//Constructeur
 	public Utilisateur()
 	{
-		this.setId(++count);
-		this.setNom(auto_nom[this.id%4]+this.id);
+		this.setNom(auto_nom[++count%4]+this.id);
 		this.setMail(this.nom+auto_mail);
 		this.setPassword("password");
 	}	
