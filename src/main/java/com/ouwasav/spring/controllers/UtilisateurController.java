@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,8 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ouwasav.spring.models.Utilisateur;
+import com.ouwasav.spring.service.EmailService;
 import com.ouwasav.spring.service.UtilisateurService;
 import com.ouwasav.spring.service.UtilisateurServiceBean;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -31,10 +36,20 @@ import com.ouwasav.spring.service.UtilisateurServiceBean;
 @RestController
 public class UtilisateurController
 {
-	
+
 	@Autowired
 	private UtilisateurService utilisateurService;
 	
+
+	  /**
+	   * The EmailService business service.
+	   */
+	  @Autowired
+	  private EmailService emailService;
+	  
+	    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
   static List<Utilisateur> utilisateurs_list;
   static Map<Integer,Utilisateur> utilisateurs_maps;
 
@@ -53,7 +68,7 @@ public class UtilisateurController
 
   //Methode
 
- 
+
 
   //Route
   @RequestMapping(value = "/utilisateur" ,
@@ -116,7 +131,7 @@ public class UtilisateurController
     Utilisateur u_find = utilisateurs_maps.get(id);
     return new ResponseEntity<Utilisateur>(utilisateurService.findOne(id), HttpStatus.OK);
   }
-  
+
   @RequestMapping(value = "/maps/utilisateur/{id}" ,
   method=RequestMethod.DELETE ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
@@ -163,5 +178,63 @@ public class UtilisateurController
     	return new ResponseEntity<Utilisateur>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
     return new ResponseEntity<Utilisateur>(utilisateur_save, HttpStatus.OK);
+  }
+
+
+  
+
+  /**
+   * Web service endpoint to fetch a single Utilisateur entity by primary key
+   * identifier and send it as an email.
+   *
+   * If found, the Utilisateur is returned as JSON with HTTP status 200 and sent
+   * via Email.
+   *
+   * If not found, the service returns an empty response body with HTTP status
+   * 404.
+   *
+   * @param id A Long URL path variable containing the Utilisateur primary key
+   *        identifier.
+   * @param waitForAsyncResult A boolean indicating if the web service should
+   *        wait for the asynchronous email transmission.
+   * @return A ResponseEntity containing a single Utilisateur object, if found,
+   *         and a HTTP status code as described in the method comment.
+   */
+  @RequestMapping(
+          value = "/maps/utilisateur/{id}/send",
+          method = RequestMethod.POST,
+          produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Utilisateur> sendUtilisateur(@PathVariable("id") int id,
+          @RequestParam(
+                  value = "wait",
+                  defaultValue = "false") boolean waitForAsyncResult) {
+
+      logger.info("> sendUtilisateur id:{}", id);
+
+      Utilisateur utilisateur = null;
+
+      try {
+          utilisateur = utilisateurService.findOne(id);
+          if (utilisateur == null) {
+              logger.info("< sendUtilisateur id:{}", id);
+              return new ResponseEntity<Utilisateur>(HttpStatus.NOT_FOUND);
+          }
+
+          if (waitForAsyncResult) {
+              Future<Boolean> asyncResponse = emailService
+                      .sendAsyncWithResult(utilisateur);
+              boolean emailSent = asyncResponse.get();
+              logger.info("- utilisateur email sent? {}", emailSent);
+          } else {
+              emailService.sendAsync(utilisateur);
+          }
+      } catch (Exception e) {
+          logger.error("A problem occurred sending the Utilisateur.", e);
+          return new ResponseEntity<Utilisateur>(
+                  HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+
+      logger.info("< sendUtilisateur id:{}", id);
+      return new ResponseEntity<Utilisateur>(utilisateur, HttpStatus.OK);
   }
 }
