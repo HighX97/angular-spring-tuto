@@ -3,20 +3,22 @@ greetingControllers = angular.module 'greetingControllers', []
 
 # Define the GreetingListController Controller
 greetingControllers.controller 'GreetingListController', ['$scope', 'Greeting'
-  ($scope, Greeting) ->
+($scope, Greeting) ->
 
-    $scope.greetings = Greeting.query()
+  #$http.get('localhost:8080/maps/utilisateur').success(function(data){console.log(data);});
 
-    $scope.greetingSort = 'text'
+  $scope.greetings = Greeting.query()
 
-    $scope.greetingInfoClass = 'text-muted'
+  $scope.greetingSort = 'text'
+
+  $scope.greetingInfoClass = 'text-muted'
 
 ]
 
 # Define the GreetingDetail Controller
 greetingControllers.controller 'GreetingDetailController', ['$scope', '$routeParams', 'Greeting',
-  ($scope, $routeParams, Greeting) ->
+($scope, $routeParams, Greeting) ->
 
-    $scope.greeting = Greeting.get {greetingId: $routeParams.greetingId}
+  $scope.greeting = Greeting.get {greetingId: $routeParams.greetingId}
 
 ]

@@ -22,12 +22,21 @@ myApp.config ['$routeProvider',
       .when '/greetings/:greetingId',
         templateUrl: 'assets/app/partials/greeting/greeting-detail.html'
         controller: 'GreetingDetailController',
+<<<<<<< HEAD
       .when '/utilisateurs',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-list.html'
         controller: 'UtilisateurListController'
       .when '/utilisateurs/:utilisateurId',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
         controller: 'UtilisateurDetailController'
+=======
+#      .when '/utilisateurs',
+#        templateUrl: 'assets/app/partials/utilisateur/utilisateur-list.html'
+#        controller: 'UtilisateurListController'
+#      .when '/utilisateurs/:utilisateurId',
+#        templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
+#        controller: 'UtilisateurDetailController'
+>>>>>>> aee70a117ae31eeb3629521a9051f2d3c106b627
       .otherwise
         redirectTo: '/home'
 ]
