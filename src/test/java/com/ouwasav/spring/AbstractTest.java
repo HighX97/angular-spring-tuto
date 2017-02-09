@@ -1,4 +1,4 @@
-package com.ouwasav.spring; 
+package com.ouwasav.spring;
  
 import org.junit.runner.RunWith; 
 import org.slf4j.Logger; 
@@ -23,4 +23,4 @@ public abstract class AbstractTest {
      */ 
     protected Logger logger = LoggerFactory.getLogger(this.getClass()); 
  
-} 
+}
