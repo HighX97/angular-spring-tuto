@@ -1,5 +1,9 @@
-{
-  "id": 3,
-  "text": "Bonjour Le Monde!",
-  "lang": "fr"
-}
+
+
+  {
+    "id": 3,
+    "nom": "Guillaume",
+    "phone": "0123456789",
+    "mail": "danae@smile.fr",
+    "password": "password"
+  }

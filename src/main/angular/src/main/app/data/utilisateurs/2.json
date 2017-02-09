@@ -1,5 +1,8 @@
-{
-  "id": 2,
-  "text": "Hola Mundo!",
-  "lang": "es"
-}
+
+  {
+    "id": 2,
+    "nom": "Marc",
+    "phone": "0123456789",
+    "mail": "danae@smile.fr",
+    "password": "password"
+  }
