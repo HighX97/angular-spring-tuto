@@ -3,7 +3,9 @@
 myApp = angular.module 'myApp', [
   'homeControllers',
   'greetingControllers',
-  'myServices',
+  'greetingServices',
+  'utilisateurControllers',
+  'utilisateurServices',
   'ngRoute',
   'ngAnimate',
   'mgcrea.ngStrap'
@@ -12,15 +14,20 @@ myApp = angular.module 'myApp', [
 # Configure the ngRoute Module
 myApp.config ['$routeProvider',
   ($routeProvider) ->
-    $routeProvider
-      .when '/home',
+    $routeProvider .when '/home',
         templateUrl: 'assets/app/partials/home.html'
       .when '/greetings',
-        templateUrl: 'assets/app/partials/greeting-list.html'
+        templateUrl: 'assets/app/partials/greeting/greeting-list.html'
         controller: 'GreetingListController'
       .when '/greetings/:greetingId',
-        templateUrl: 'assets/app/partials/greeting-detail.html'
-        controller: 'GreetingDetailController'
+        templateUrl: 'assets/app/partials/greeting/greeting-detail.html'
+        controller: 'GreetingDetailController',
+      .when '/utilisateurs',
+        templateUrl: 'assets/app/partials/utilisateur/utilisateur-list.html'
+        controller: 'UtilisateurListController'
+      .when '/utilisateurs/:utilisateurId',
+        templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
+        controller: 'UtilisateurDetailController'
       .otherwise
         redirectTo: '/home'
 ]
