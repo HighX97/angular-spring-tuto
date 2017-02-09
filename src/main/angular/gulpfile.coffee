@@ -27,7 +27,7 @@ gulp.task 'lib', ->
     .pipe(gulp.dest('dist/assets/lib'))
 
 gulp.task 'scripts', ->
-  gulp.src(['src/main/app/coffee/services.coffee','src/main/app/coffee/controllers.coffee','src/main/app/coffee/application.coffee'])
+  gulp.src(['src/main/app/coffee/services/services.coffee','src/main/app/coffee/controllers/controllers.coffee','src/main/app/coffee/application.coffee'])
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())
     .pipe(sourcemaps.init())
