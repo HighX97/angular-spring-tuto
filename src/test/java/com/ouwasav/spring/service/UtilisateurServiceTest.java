@@ -90,7 +90,7 @@ public class UtilisateurServiceTest extends AbstractTest{
 
 	        Collection<Utilisateur> list = utilisateurService.findAll();
 
-	        Assert.assertEquals("failure - expected size", 3, list.size());
+	        Assert.assertEquals("failure - expected size", 2, list.size());
 
 	    }
 
@@ -100,7 +100,7 @@ public class UtilisateurServiceTest extends AbstractTest{
 	        Exception exception = null;
 
 	        Utilisateur entity = new Utilisateur();
-	        entity.setId(Integer.MAX_VALUE);
+	        entity.setId(1);
 	        entity.setNom("testNom");
 	        entity.setPassword("testpassword");
 	        entity.setMail("test@gtest.fr");

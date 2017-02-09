@@ -18,6 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ouwasav.spring.models.Utilisateur;
 import com.ouwasav.spring.repository.UtilisateurRepository;
 
+
+import javax.persistence.EntityExistsException;
+import javax.persistence.NoResultException;
+
 @Service
 @Transactional(
 		propagation = Propagation.SUPPORTS,
@@ -53,14 +57,21 @@ public class UtilisateurServiceBean implements UtilisateurService {
 	@CachePut(value ="utilisateurs", key="#result.id")
 	public Utilisateur create(Utilisateur u) {
 //		return save_tools(u);
-		
-		
-		//Illustrate Tx rollback
-		Utilisateur u_created = utilisateurRepository.save(u);
-		if (u_created.getId() == 4L)
+		Utilisateur u_to_update = utilisateurRepository.findOne(u.getId()) ;
+		if (u_to_update != null)
 		{
-			throw new RuntimeException("Roll me back!!!");
+			throw new EntityExistsException();
+		}	
+		else
+		{
+			//Illustrate Tx rollback
+			Utilisateur u_created = utilisateurRepository.save(u);
+			if (u_created.getId() == 4L)
+			{
+				throw new RuntimeException("Roll me back!!!");
+			}
 		}
+
 		return utilisateurRepository.save(u);
 	}
 
@@ -69,7 +80,7 @@ public class UtilisateurServiceBean implements UtilisateurService {
 			readOnly=false
 			)	
 	@CachePut(value ="utilisateurs", key="#id")
-	public Utilisateur update(Utilisateur u,int id) {
+	public Utilisateur update(Utilisateur u,int id) throws NoResultException{
 		System.err.println("update bef"+id);
 //		return update_tools(u, id);
 //		/*
@@ -80,8 +91,11 @@ public class UtilisateurServiceBean implements UtilisateurService {
 			System.err.println("update aft: "+id);
 			return utilisateurRepository.save(u_to_update);
 		}
-		return null;
-//		*/
+		else
+		{
+			throw new NoResultException();
+		}
+		
 		
 	}
 
