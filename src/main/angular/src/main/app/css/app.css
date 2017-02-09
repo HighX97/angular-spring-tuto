@@ -1,0 +1,13 @@
+/*
+  Angular Starter Project CSS Rules
+*/
+
+footer {
+  border-top: 1px solid #eeeee;
+  margin-top: 50px;
+  padding-top: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
