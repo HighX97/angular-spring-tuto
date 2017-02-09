@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          <i class="fa fa-list text-primary"></i> Utilisateur List
+          <sup bs-tooltip
+               data-trigger="hover"
+               data-animation="am-flip-x"
+               data-title="Click for more information.">
+            <i class="fa fa-info-circle"
+               ng-class="utilisateurInfoClass"
+               ng-mouseover="utilisateurInfoClass='text-primary fa-lg cursor-pointer'"
+               ng-mouseleave="utilisateurInfoClass='text-muted'"
+               bs-aside
+               data-template="assets/app/partials/utilisateur-info-aside.html"
+               data-container="body">
+            </i>
+          </sup>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-6">
+      <div class="btn-group pull-right" role="group" aria-label="Sort Utilisateurs">
+        <button type="button" ng-click="utilisateurSort='text'" class="btn btn-default" ng-class="{active: utilisateurSort==='text'}"><i class="fa fa-fw fa-sort-alpha-asc"></i></button>
+        <button type="button" ng-click="utilisateurSort='lang'" class="btn btn-default" ng-class="{active: utilisateurSort==='lang'}"><i class="fa fa-fw fa-language"></i></button>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="input-group">
+        <span class="input-group-addon" id="filter-addon"><i class="fa fa-filter"></i></span>
+        <input type="text" id="utilisateur-filter" class="form-control input-sm" aria-describedby="filter-addon" placeholder="type to filter list" ng-model="utilisateurFilter" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Utilisateur</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="utilisateur in utilisateurs | filter:utilisateurFilter | orderBy:utilisateurSort">
+            <td><a href="#/utilisateurs/{{utilisateur.id}}">{{utilisateur.text}}</a></td>
+            <td>{{utilisateur.lang}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
