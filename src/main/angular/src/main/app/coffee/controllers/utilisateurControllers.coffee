@@ -21,9 +21,13 @@ utilisateurControllers.controller 'UtilisateurListController', ['$scope','$http'
 ]
 
 # Define the UtilisateurDetail Controller
-utilisateurControllers.controller 'UtilisateurDetailController', ['$scope', '$routeParams', 'Utilisateur',
-  ($scope, $routeParams, Utilisateur) ->
+utilisateurControllers.controller 'UtilisateurDetailController', ['$scope','$http', '$routeParams', 'Utilisateur',
+  ($scope, $http, $routeParams, Utilisateur) ->
+        console.log 'http://localhost:8080/maps/utilisateur/'+$routeParams.utilisateurId
+        $http.get('http://localhost:8080/maps/utilisateur/'+$routeParams.utilisateurId).then (response) ->
+            $scope.utilisateur = response.data
+            console.log '$scope.utilisateur'
+            console.log response.data
 
-    $scope.utilisateur = Utilisateur.get {utilisateurId: $routeParams.utilisateurId}
 
 ]
