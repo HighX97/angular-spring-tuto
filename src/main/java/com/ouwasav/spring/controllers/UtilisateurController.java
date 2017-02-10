@@ -28,6 +28,9 @@ import com.ouwasav.spring.service.UtilisateurServiceBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 /**
 * @author loort
@@ -71,6 +74,7 @@ public class UtilisateurController
 
 
   //Route
+  @CrossOrigin
   @RequestMapping(value = "/utilisateur" ,
   method=RequestMethod.GET ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
@@ -81,6 +85,7 @@ public class UtilisateurController
     return new ResponseEntity<List<Utilisateur>>(utilisateurs_list, HttpStatus.OK);
   }
 
+  @CrossOrigin
   @RequestMapping(value = "/utilisateur/{id}" ,
   method=RequestMethod.GET ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
@@ -96,10 +101,13 @@ public class UtilisateurController
         break;
       }
     }
-    return new ResponseEntity<Utilisateur>(u_find, HttpStatus.OK);
+    ResponseEntity<Utilisateur> response=new ResponseEntity<Utilisateur>(u_find, HttpStatus.OK); 
+    
+    return response;
   }
 
 
+  @CrossOrigin
   @RequestMapping(value = "/utilisateur" ,
   method=RequestMethod.POST ,
   consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE ,
@@ -111,7 +119,7 @@ public class UtilisateurController
     return new ResponseEntity<Utilisateur>(utilisateur_send, HttpStatus.CREATED);
   }
 
-
+  @CrossOrigin
   @RequestMapping(value = "/maps/utilisateur" ,
   method=RequestMethod.GET ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
@@ -122,6 +130,7 @@ public class UtilisateurController
     return new ResponseEntity<Collection<Utilisateur>>(utilisateurService.findAll(), HttpStatus.OK);
   }
 
+  @CrossOrigin
   @RequestMapping(value = "/maps/utilisateur/{id}" ,
   method=RequestMethod.GET ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
@@ -132,6 +141,7 @@ public class UtilisateurController
     return new ResponseEntity<Utilisateur>(utilisateurService.findOne(id), HttpStatus.OK);
   }
 
+  @CrossOrigin
   @RequestMapping(value = "/maps/utilisateur/{id}" ,
   method=RequestMethod.DELETE ,
   produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
@@ -147,6 +157,7 @@ public class UtilisateurController
   }
 
 
+  @CrossOrigin
   @RequestMapping(value = "/maps/utilisateur" ,
   method=RequestMethod.POST ,
   consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE ,
@@ -165,6 +176,7 @@ public class UtilisateurController
     return new ResponseEntity<Utilisateur>(utilisateur_save, HttpStatus.CREATED);
   }
 
+  @CrossOrigin
   @RequestMapping(value = "/maps/utilisateur/{id}" ,
   method=RequestMethod.PUT ,
   consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE ,
@@ -200,6 +212,7 @@ public class UtilisateurController
    * @return A ResponseEntity containing a single Utilisateur object, if found,
    *         and a HTTP status code as described in the method comment.
    */
+  @CrossOrigin
   @RequestMapping(
           value = "/maps/utilisateur/{id}/send",
           method = RequestMethod.POST,
