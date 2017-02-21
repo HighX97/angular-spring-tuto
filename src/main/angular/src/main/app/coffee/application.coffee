@@ -21,10 +21,13 @@ myApp.config ['$routeProvider',
         controller: 'GreetingListController'
       .when '/greetings/:greetingId',
         templateUrl: 'assets/app/partials/greeting/greeting-detail.html'
-        controller: 'GreetingDetailController',
+        controller: 'GreetingDetailController'
       .when '/utilisateurs',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-list.html'
         controller: 'UtilisateurListController'
+      .when '/utilisateurs/add',
+        templateUrl: 'assets/app/partials/utilisateur/utilisateur-add.html'
+        controller: 'UtilisateurAddController'
       .when '/utilisateurs/:utilisateurId',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
         controller: 'UtilisateurDetailController'

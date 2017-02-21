@@ -2,13 +2,11 @@
 utilisateurServices = angular.module 'utilisateurServices', ['ngResource']
 
 # Define the Utilisateur Service
-utilisateurServices.factory 'Utilisateur', ['$resource',
-  ($resource) ->
-    $resource 'assets/app/data/utilisateurs/:utilisateurId.json', {}, {
-      query:
-        method: 'GET'
-        params:
-          utilisateurId: 'utilisateurs'
-        isArray: true
-    }
+utilisateurServices.factory 'Utilisateur', ['$http', ($http) ->
+    getAllUtilisateur: ->
+      request = $http.get 'http://localhost:8080/maps/utilisateur/'
+      request.then (result) =>
+        @utilisateurs = result.data
+        console.log @utilisateurs
+        @utilisateurs
 ]

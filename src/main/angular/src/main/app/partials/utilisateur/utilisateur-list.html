@@ -23,7 +23,23 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3 col-md-offset-6">
+  <div class="col-md-3">
+    <a type="button" href="#/utilisateurs/add" class="btn btn-default"><i class="fa fa-fw fa-plus-square-o" aria-hidden="true"></i></a>
+    <sup bs-tooltip
+    data-trigger="hover"
+    data-animation="am-flip-x"
+    data-title="Click for add utilisateur.">
+    <i class="fa fa-info-circle"
+    ng-class="utilisateurInfoClass"
+    ng-mouseover="utilisateurInfoClass='text-primary fa-lg cursor-pointer'"
+    ng-mouseleave="utilisateurInfoClass='text-muted'"
+    bs-aside
+    data-template="assets/app/partials/utilisateur-info-aside.html"
+    data-container="body">
+  </i>
+  </div>
+
+  <div class="col-md-3 col-md-offset-3">
     <div class="btn-group pull-right" role="group" aria-label="Sort Utilisateurs">
       <button type="button" ng-click="utilisateurSort='nom'" class="btn btn-default" ng-class="{active: utilisateurSort==='text'}"><i class="fa fa-fw fa-sort-alpha-asc"></i></button>
       <button type="button" ng-click="utilisateurSort='id'" class="btn btn-default" ng-class="{active: utilisateurSort==='lang'}"><i class="fa fa-fw fa-language"></i></button>
