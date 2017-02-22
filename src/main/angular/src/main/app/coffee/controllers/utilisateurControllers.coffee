@@ -40,12 +40,12 @@ utilisateurControllers.controller 'UtilisateurAddController', ['$scope','$http',
   $scope.createUtilisateur = ->
     console.log "CreateUtilisateur"
     console.log $scope.utilisateur
-    $http.post('localhost:8080/maps/utilisateur', $scope.utilisateur).then (result) ->
+    $http.post('http://localhost:8080/maps/utilisateur', $scope.utilisateur).then (result) ->
       if result.data.success
         if result.data.result.length > 0
-          resolve result.data.message
+          console.log  result.data.message
         else
-          reject result.data.message
+          console.log  result.data.message
       else
-        reject result.data.message
+        console.log  result.data.message
 ]
