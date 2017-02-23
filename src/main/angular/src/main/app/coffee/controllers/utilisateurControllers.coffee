@@ -4,8 +4,9 @@ utilisateurControllers = angular.module 'utilisateurControllers', []
 # Define the UtilisateurListController Controller
 utilisateurControllers.controller 'UtilisateurListController', ['$scope','$http', 'Utilisateur'
 ($scope, $http, Utilisateur) ->
-    $scope.utilisateurs = Utilisateur.get
-    $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
+    console.log Utilisateur
+    Utilisateur.getAllUtilisateur().then (response) ->
+      console.log response
       $scope.utilisateurs = response.data
       $scope.statuscode = response.status
       $scope.statustext = response.statusText

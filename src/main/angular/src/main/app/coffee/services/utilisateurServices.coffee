@@ -3,10 +3,10 @@ utilisateurServices = angular.module 'utilisateurServices', ['ngResource']
 
 # Define the Utilisateur Service
 utilisateurServices.factory 'Utilisateur', ['$http', ($http) ->
-    getAllUtilisateur: ->
-      request = $http.get 'http://localhost:8080/maps/utilisateur/'
-      request.then (result) =>
-        @utilisateurs = result.data
-        console.log @utilisateurs
-        @utilisateurs
+  getAllUtilisateur: ->
+    console.log "Service getAllUtilisateur"
+    $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
+      console.log "Service"
+      console.log response
+      return response
 ]
