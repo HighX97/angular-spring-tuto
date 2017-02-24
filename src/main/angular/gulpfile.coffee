@@ -31,7 +31,8 @@ gulp.task 'scripts', ->
   'src/main/app/coffee/controllers/*',
   'src/main/app/coffee/factories/*',
   'src/main/app/coffee/providers/*',
-  'src/main/app/coffee/application.coffee'])
+  'src/main/app/coffee/application.coffee',
+  'src/main/app/coffee/directives/*'])
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())
     .pipe(sourcemaps.init())
