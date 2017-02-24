@@ -23,6 +23,7 @@ utilisateurServices.service 'serviceUtilisateurList', ['$http', ($http) ->
 
 #AngularJS Provider Issue #2
 #http://jsfiddle.net/thomporter/zjFp4/1/
+###
 utilisateurServices.provider 'helloWorld', ->
   @name = 'Default'
 
@@ -44,7 +45,6 @@ utilisateurServices.config (helloWorldProvider) ->
 
 
 #hey, we can configure a provider!
-###
 utilisateurServices.config (helloWorldProvider) ->
 helloWorldProvider.setName('Lowx')
 
