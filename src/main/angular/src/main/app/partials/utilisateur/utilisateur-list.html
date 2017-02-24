@@ -63,6 +63,7 @@
           <th>Nom</th>
           <th>Phone</th>
           <th>Mail</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -71,6 +72,8 @@
           <td>{{utilisateur.nom}}</td>
           <td>{{utilisateur.phone}}</td>
           <td>{{utilisateur.mail}}</td>
+          <td><a class="btn btn-danger fa fa-trash-o" round  ng-click="delUtilisateur(utilisateur.id)"></a>
+          </td>
         </tr>
       </tbody>
     </table>

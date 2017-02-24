@@ -21,6 +21,15 @@ utilisateurFactories.factory 'factoryUtilisateurOne', ['$http', ($http) ->
         return response
 ]
 # Define the Utilisateur Service
+utilisateurFactories.factory 'factoryUtilisateurDel', ['$http', ($http) ->
+  delUtilisateur : (id) ->
+      $http.delete('http://localhost:8080/maps/utilisateur/'+id).then (response) ->
+        console.log response
+        console.log '$scope.utilisateur'
+        console.log response.data
+        return response
+]
+# Define the Utilisateur Service
 utilisateurFactories.factory 'factoryUtilisateurNew', ['$http', ($http) ->
   addUtilisateur : (utilisateur) ->
     $http.post('http://localhost:8080/maps/utilisateur', utilisateur).then (response) ->
