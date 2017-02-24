@@ -20,21 +20,46 @@ utilisateurServices.service 'serviceUtilisateurList', ['$http', ($http) ->
       this.response = response
 ]
 
+
+#AngularJS Provider Issue #2
+#http://jsfiddle.net/thomporter/zjFp4/1/
+utilisateurServices.provider 'helloWorld', ->
+  @name = 'Default'
+
+  @$get = ->
+    name = @name
+    { sayHello: ->
+      'Hello, ' + name + '!'
+ }
+
+  @setName = (name) ->
+    @name = name
+    return
+
+  return
+utilisateurServices.config (helloWorldProvider) ->
+  helloWorldProvider.setName 'World'
+  return
+#provider style, full blown, configurable version
+
+
+#hey, we can configure a provider!
 ###
+utilisateurServices.config (helloWorldProvider) ->
+helloWorldProvider.setName('Lowx')
+
 utilisateurServices.provider 'providerUtilisateurList', ['$http', ($http) ->
-  getAllUtilisateur: ->
-    console.log "Service getAllUtilisateur"
-    $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
-      console.log "Service"
-      console.log response
-      resp = response
-      @$get = ->
-          {
-            response : resp
-          }
+  @$get = ->
+    {
+      getAllUtilisateur: ->
+        console.log "Service getAllUtilisateur"
+        $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
+          console.log "Service"
+          console.log response
+          this.response = response
+    }
 ]
 ###
-
 utilisateurServices.factory 'UtilisateurOne', ['$http', ($http) ->
   getUtilisateur: ->
     console.log "Service getAllUtilisateur"

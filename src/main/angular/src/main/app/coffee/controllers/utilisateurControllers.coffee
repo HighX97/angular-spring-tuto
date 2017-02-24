@@ -5,10 +5,12 @@ utilisateurControllers = angular.module 'utilisateurControllers', []
 utilisateurControllers.controller 'UtilisateurListController', ['$scope',
 '$http',
 'factoryUtilisateurList',
-'serviceUtilisateurList'
+'serviceUtilisateurList',
+
 ($scope, $http, factoryUtilisateurList,serviceUtilisateurList) ->
     console.log factoryUtilisateurList
     console.log serviceUtilisateurList
+    #console.log providerUtilisateurList
     serviceUtilisateurList.getAllUtilisateur().then (response) ->
       console.log response
       $scope.utilisateurs = response.data
@@ -18,6 +20,15 @@ utilisateurControllers.controller 'UtilisateurListController', ['$scope',
       $scope.utilisateurInfoClass = 'text-muted'
       ###
     factoryUtilisateurList.getAllUtilisateur().then (response) ->
+      console.log response
+      $scope.utilisateurs = response.data
+      $scope.statuscode = response.status
+      $scope.statustext = response.statusText
+      $scope.utilisateurSort = 'text'
+      $scope.utilisateurInfoClass = 'text-muted'
+      ###
+      ###
+    serviceUtilisateurList.getAllUtilisateur().then (response) ->
       console.log response
       $scope.utilisateurs = response.data
       $scope.statuscode = response.status
