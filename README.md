@@ -1,4 +1,4 @@
-# maven-spring-tuto
+#TutoSpringAngular
 
 #Start server
 cd maven-spring-tuto/

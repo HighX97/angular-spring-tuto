@@ -29,6 +29,8 @@ gulp.task 'lib', ->
 gulp.task 'scripts', ->
   gulp.src(['src/main/app/coffee/services/*',
   'src/main/app/coffee/controllers/*',
+  'src/main/app/coffee/factories/*',
+  'src/main/app/coffee/providers/*',
   'src/main/app/coffee/application.coffee'])
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())

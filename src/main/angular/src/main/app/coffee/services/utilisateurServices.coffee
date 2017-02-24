@@ -1,16 +1,6 @@
 # Define the Application Services Module
 utilisateurServices = angular.module 'utilisateurServices', ['ngResource']
 
-# Define the Utilisateur Service
-utilisateurServices.factory 'factoryUtilisateurList', ['$http', ($http) ->
-  getAllUtilisateur: ->
-    console.log "Service getAllUtilisateur"
-    $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
-      console.log "Service"
-      console.log response
-      return response
-]
-
 utilisateurServices.service 'serviceUtilisateurList', ['$http', ($http) ->
   getAllUtilisateur: ->
     console.log "Service getAllUtilisateur"
@@ -19,7 +9,6 @@ utilisateurServices.service 'serviceUtilisateurList', ['$http', ($http) ->
       console.log response
       this.response = response
 ]
-
 
 #AngularJS Provider Issue #2
 #http://jsfiddle.net/thomporter/zjFp4/1/
@@ -50,7 +39,7 @@ helloWorldProvider.setName('Lowx')
 
 utilisateurServices.provider 'providerUtilisateurList', ['$http', ($http) ->
   @$get = ->
-    {
+    {utilisateurFactories
       getAllUtilisateur: ->
         console.log "Service getAllUtilisateur"
         $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
@@ -60,11 +49,3 @@ utilisateurServices.provider 'providerUtilisateurList', ['$http', ($http) ->
     }
 ]
 ###
-utilisateurServices.factory 'UtilisateurOne', ['$http', ($http) ->
-  getUtilisateur: ->
-    console.log "Service getAllUtilisateur"
-    $http.get('http://localhost:8080/maps/utilisateur').then (response) ->
-      console.log "Service"
-      console.log response
-      return response
-]

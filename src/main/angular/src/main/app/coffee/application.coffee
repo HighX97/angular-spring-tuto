@@ -6,6 +6,7 @@ myApp = angular.module 'myApp', [
   'greetingServices',
   'utilisateurControllers',
   'utilisateurServices',
+  'utilisateurFactories',
   'ngRoute',
   'ngAnimate',
   'mgcrea.ngStrap'
