@@ -2,16 +2,29 @@
 utilisateurControllers = angular.module 'utilisateurControllers', []
 
 # Define the UtilisateurListController Controller
-utilisateurControllers.controller 'UtilisateurListController', ['$scope','$http', 'Utilisateur'
-($scope, $http, Utilisateur) ->
-    console.log Utilisateur
-    Utilisateur.getAllUtilisateur().then (response) ->
+utilisateurControllers.controller 'UtilisateurListController', ['$scope',
+'$http',
+'factoryUtilisateurList',
+'serviceUtilisateurList'
+($scope, $http, factoryUtilisateurList,serviceUtilisateurList) ->
+    console.log factoryUtilisateurList
+    console.log serviceUtilisateurList
+    serviceUtilisateurList.getAllUtilisateur().then (response) ->
       console.log response
       $scope.utilisateurs = response.data
       $scope.statuscode = response.status
       $scope.statustext = response.statusText
       $scope.utilisateurSort = 'text'
       $scope.utilisateurInfoClass = 'text-muted'
+      ###
+    factoryUtilisateurList.getAllUtilisateur().then (response) ->
+      console.log response
+      $scope.utilisateurs = response.data
+      $scope.statuscode = response.status
+      $scope.statustext = response.statusText
+      $scope.utilisateurSort = 'text'
+      $scope.utilisateurInfoClass = 'text-muted'
+      ###
 ]
 
 # Define the UtilisateurDetail Controller
