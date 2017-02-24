@@ -1,12 +1,18 @@
 # The Angular Application Module
 
 myApp = angular.module 'myApp', [
+  #
   'homeControllers',
   'greetingControllers',
-  'greetingServices',
   'utilisateurControllers',
+  #
+  'greetingServices',
   'utilisateurServices',
+  #
   'utilisateurFactories',
+  #
+  'utilisateurDirectives',
+  #
   'ngRoute',
   'ngAnimate',
   'mgcrea.ngStrap'
@@ -29,6 +35,9 @@ myApp.config ['$routeProvider',
       .when '/utilisateurs/add',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-add.html'
         controller: 'UtilisateurAddController'
+      .when '/utilisateurs/upd',
+        templateUrl: 'assets/app/partials/utilisateur/utilisateur-upd.html'
+        controller: 'UtilisateurUpdController'
       .when '/utilisateurs/:utilisateurId',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
         controller: 'UtilisateurDetailController'

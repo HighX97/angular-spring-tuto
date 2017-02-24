@@ -7,14 +7,15 @@ utilisateurControllers.controller 'UtilisateurListController', ['$scope',
 'factoryUtilisateurList',
 'serviceUtilisateurList',
 'factoryUtilisateurDel',
-
-($scope, $http, factoryUtilisateurList,serviceUtilisateurList, factoryUtilisateurDel) ->
+'$location'
+($scope, $http, factoryUtilisateurList,serviceUtilisateurList, factoryUtilisateurDel,$location) ->
 
 
     $scope.delUtilisateur = (id)->
       console.log "DeleteUtilisateur BEGIN"
       factoryUtilisateurDel.delUtilisateur(id).then (response) ->
         console.log "DeleteUtilisateur END"
+        $location.path('/utilisateurs')
 
     serviceUtilisateurList.getAllUtilisateur().then (response) ->
       $scope.utilisateurs = response.data
@@ -72,6 +73,63 @@ utilisateurControllers.controller 'UtilisateurDeleteController', ['$scope',
 
 # Define the UtilisateurAdd Controller
 utilisateurControllers.controller 'UtilisateurAddController', ['$scope','$http', '$routeParams',
+'factoryUtilisateurNew','$location',
+($scope, $http, $routeParams, factoryUtilisateurNew, $location) ->
+  $scope.utilisateur = {
+    "nom": "",
+    "phone": "",
+    "mail": "",
+    "password": ""
+    "confirmPassword":""
+  }
+  $scope.confirmPassword = ""
+  console.log 'CreateUtilisateur'
+
+  $scope.createUtilisateur = ->
+    console.log "CreateUtilisateur"
+    console.log $scope.utilisateur
+    formValide = true
+    console.log "formValide : "+formValide
+    if ($scope.utilisateur.nom == null || $scope.utilisateur.nom == "")
+      console.log "nom ISSUE"
+      formValide = false
+      console.log "formValide : "+formValide
+    if ($scope.utilisateur.phone == null || $scope.utilisateur.phone == "")
+      console.log "phone ISSUE"
+      formValide = false
+      console.log "formValide : "+formValide
+    if ($scope.utilisateur.mail == null || $scope.utilisateur.mail == "")
+      console.log "mail ISSUE"
+      formValide = false
+      console.log "formValide : "+formValide
+    console.log "$scope.confirmPassword : "+$scope.utilisateur.confirmPassword
+    console.log "$scope.utilisateur.password : "+$scope.utilisateur.password
+    if ($scope.utilisateur.password != $scope.utilisateur.confirmPassword)
+      console.log "password ISSUE"
+      formValide = false
+      console.log formValide
+    console.log "formValide : "+formValide
+    console.log "formValide : "+formValide
+    if formValide
+      factoryUtilisateurNew.addUtilisateur($scope.utilisateur).then (result) ->
+        if result.data.success
+          if result.data.result.length > 0
+            console.log  result.data.message
+            console.log "$location.path('/utilisateurs')"
+            $location.path('/utilisateurs')
+          else
+            console.log  result.data.message
+            console.log "$location.path('/utilisateurs')"
+            $location.path('/utilisateurs')
+        else
+          console.log  result.data.message
+          console.log "$location.path('/utilisateurs')"
+          $location.path('/utilisateurs')
+    else
+      console.log "None"
+]
+
+utilisateurControllers.controller 'UtilisateurUpdController', ['$scope','$http', '$routeParams',
 'factoryUtilisateurNew','$location',
 ($scope, $http, $routeParams, factoryUtilisateurNew, $location) ->
   $scope.utilisateur = {
