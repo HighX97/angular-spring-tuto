@@ -7,8 +7,13 @@ numberFilters.filter 'base', ->
     parsed = parseInt(input, 10)
     based = parseInt(base, 10)
     #isNaN is not isNan
-    if isNaN(parsed) || isNaN(based)
-      console.log ("nan")
-      input
-    parsed.toString(based)
+    if (isNaN(parsed) || isNaN(based))
+      # body...
+      ""
+    else if based <= 1 || based >= 36
+      # body...
+      "based must be between 2 - 36"
+    else
+      # body...
+      parsed.toString(based)
     # 0
