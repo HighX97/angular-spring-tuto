@@ -13,6 +13,7 @@ myApp = angular.module 'myApp', [
   'utilisateurFactories',
   #
   'utilisateurDirectives',
+  'draftDirectives',
   #
   'numberFilters',
   #

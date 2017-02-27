@@ -1,11 +1,7 @@
 # Define the Application Factories Module
 utilisateurDirectives = angular.module 'utilisateurDirectives', []
 
-utilisateurDirectives.directive 'utilisateur-directive', ->
+utilisateurDirectives.directive 'utilisateurDirective', ->
   {
-    restrict: 'EAC'
-    require: '?ngModel'
-    link: ($scope, element, attrs, controller) ->
-      element.text 'iambar'
-      return
+    templateUrl: 'assets/app/partials/utilisateur/utilisateur-add.html'
   }
