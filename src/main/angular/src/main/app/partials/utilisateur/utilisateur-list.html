@@ -36,7 +36,7 @@
     bs-aside
     data-template="assets/app/partials/utilisateur-info-aside.html"
     data-container="body">
-  </i>
+  </i>id
   </div>
 
   <div class="col-md-3 col-md-offset-3">
@@ -68,7 +68,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="utilisateur in utilisateurs | filter:utilisateurFilter | orderBy:utilisateurSort">
-          <td><a href="#/utilisateurs/{{utilisateur.id}}">{{utilisateur.id}}</a></td>
+          <td><a href="#/utilisateurs/{{utilisateur.id}}">{{utilisateur.id | uppercase}}</a></td>
           <td>{{utilisateur.nom}}</td>
           <td>{{utilisateur.phone}}</td>
           <td>{{utilisateur.mail}}</td>

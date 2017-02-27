@@ -5,6 +5,7 @@ myApp = angular.module 'myApp', [
   'homeControllers',
   'greetingControllers',
   'utilisateurControllers',
+  'draftControllers',
   #
   'greetingServices',
   'utilisateurServices',
@@ -12,6 +13,8 @@ myApp = angular.module 'myApp', [
   'utilisateurFactories',
   #
   'utilisateurDirectives',
+  #
+  'numberFilters',
   #
   'ngRoute',
   'ngAnimate',
@@ -41,6 +44,9 @@ myApp.config ['$routeProvider',
       .when '/utilisateurs/:utilisateurId',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
         controller: 'UtilisateurDetailController'
+      .when '/draft',
+        templateUrl: 'assets/app/partials/draft/draft.html'
+        controller: 'numberFiltersController'
       .otherwise
         redirectTo: '/home'
 ]
