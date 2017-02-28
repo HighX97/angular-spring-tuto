@@ -42,3 +42,19 @@ utilisateurFactories.factory 'factoryUtilisateurNew', ['$http', ($http) ->
         console.log  response.data.message
       return response
 ]
+# Define the Utilisateur Service
+utilisateurFactories.factory 'factoryUtilisateurUpdt', ['$http', ($http) ->
+  updateUtilisateur :  (utilisateur) ->
+    console.log "factory updt"
+    console.log 'http://localhost:8080/maps/utilisateur/'+utilisateur.id
+    $http.put('http://localhost:8080/maps/utilisateur/'+utilisateur.id, utilisateur).then (response) ->
+      console.log "PUT factory updt"
+      if response.data.success
+        if response.data.response.length > 0
+          console.log  response.data.message
+        else
+          console.log  response.data.message
+      else
+        console.log  response.data.message
+      return response
+]

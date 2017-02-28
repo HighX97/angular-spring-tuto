@@ -39,9 +39,9 @@ myApp.config ['$routeProvider',
       .when '/utilisateurs/add',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-add.html'
         controller: 'UtilisateurAddController'
-      .when '/utilisateurs/upd',
-        templateUrl: 'assets/app/partials/utilisateur/utilisateur-upd.html'
-        controller: 'UtilisateurUpdController'
+      .when '/utilisateurs/updt/:utilisateurId',
+        templateUrl: 'assets/app/partials/utilisateur/utilisateur-updt.html'
+        controller: 'UtilisateurUpdtController'
       .when '/utilisateurs/:utilisateurId',
         templateUrl: 'assets/app/partials/utilisateur/utilisateur-detail.html'
         controller: 'UtilisateurDetailController'
